@@ -2,28 +2,9 @@
 
 describe('Quiz Component', () => {
     beforeEach(() => {
-      // Stub API responses
-      cy.intercept('GET', '**/questions', {
-        statusCode: 200,
-        body: [
-          {
-            question: "What's 2 + 2?",
-            answers: [
-              { text: '3', isCorrect: false },
-              { text: '4', isCorrect: true },
-              { text: '5', isCorrect: false },
-            ],
-          },
-          {
-            question: "What's the capital of France?",
-            answers: [
-              { text: 'Berlin', isCorrect: false },
-              { text: 'Paris', isCorrect: true },
-              { text: 'Rome', isCorrect: false },
-            ],
-          },
-        ],
-      }).as('getQuestions');
+      cy.fixture('questions.json').then((questions) => {
+        cy.intercept('GET', '**/questions', { statusCode: 200, body: questions }).as('getQuestions');
+      });
       cy.visit('/');
     });
   

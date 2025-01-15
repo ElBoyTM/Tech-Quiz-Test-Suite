@@ -1,0 +1,19 @@
+[
+    {
+      "question": "What's 2 + 2?",
+      "answers": [
+        { "text": "3", "isCorrect": false },
+        { "text": "4", "isCorrect": true },
+        { "text": "5", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What's the capital of France?",
+      "answers": [
+        { "text": "Berlin", "isCorrect": false },
+        { "text": "Paris", "isCorrect": true },
+        { "text": "Rome", "isCorrect": false }
+      ]
+    }
+  ]
+  
