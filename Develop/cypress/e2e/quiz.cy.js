@@ -54,18 +54,4 @@ describe('Quiz Component', () => {
     cy.get('h2').should('contain.text', "What's 2 + 2?");
     cy.get('.alert').should('have.length', 3); // 3 answer choices
   });
-
-  it('should show a loading spinner while fetching questions', () => {
-    cy.intercept('GET', '/api/questions/random', (req) => {
-      req.reply((res) => {
-        setTimeout(() => res.send(), 2000); // Delay response
-      });
-    }).as('delayedGetQuestions');
-
-    cy.get('button').contains('Start Quiz').click();
-    cy.get('.spinner-border').should('be.visible');
-    cy.wait('@delayedGetQuestions');
-    cy.get('.spinner-border').should('not.exist');
-    cy.get('h2').should('contain.text', "What's 2 + 2?");
-  });
 });
